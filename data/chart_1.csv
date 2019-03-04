@@ -1,0 +1,8 @@
+"id","order","score","value","weight","color","label"
+"302",1,10000,4067,1,"#4527A0","Distance to NYU"
+"302",2,9484,14,1,"#673AB7","Number of crimes"
+"302",3,21461,2031,1,"#9575CD","Affordable units"
+"302",4,13911,3,1,"#7986CB","Number of museums"
+"302",5,16313,13,1,"#3F51B5","Air quality"
+"302",6,8500,15,1,"#283593","Number of art galleries"
+"302",7,15000,5,1,"#1A237E","Number of farmers markets"

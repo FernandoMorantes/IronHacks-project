@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ironhacks project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  </meta>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </link>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </link>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="icon" type="image/png" href="https://icons-for-free.com/free-icons/png/512/227040.png" sizes="16x16">
+  </link>
+</head>
+
+<body>
+
+  <div id="loader-wrapper">
+    <div class="loader">
+      <div class="lds-default">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <h5 class="loader_txt">Loading</h5>
+    </div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+  </div>
+
+  <div class="container-fluid h-100 w-100">
+    <div class="row h-100 w-100">
+      <div id="map"></div>
+
+      <input type="checkbox" class="checkbox_6" id="check_6"></input>
+      <input type="checkbox" class="checkbox_5" id="check_5"></input>
+      <input type="checkbox" class="checkbox_4" id="check_4"></input>
+      <input type="checkbox" class="checkbox_3" id="check_3"></input>
+      <input type="checkbox" class="checkbox_2" id="check_2"></input>
+      <input type="checkbox" class="checkbox_1" id="check_1"></input>
+
+      <div class="nav_bar">
+        <div class="nav_button_container">
+          <label class="menu_button_6" for="check_6"><i class="fas fa-question"></i></label>
+          <h6 class="button_6_txt">info</h6>
+        </div>
+        <div class="nav_button_container">
+          <label class="menu_button_5" for="check_5"><i class="fas fa-equals"></i></label>
+          <h6 class="button_5_txt">Comparision</h6>
+        </div>
+        <div class="nav_button_container">
+          <label class="menu_button_4" for="check_4"><i class="fas fa-map-marked-alt"></i></label>
+          <h6 class="button_4_txt">Districts</h6>
+        </div>
+        <div class="nav_button_container">
+          <label class="menu_button_3" for="check_3"><i class="fas fa-chart-pie"></i></label>
+          <h6 class="button_3_txt">Top 3 charts</h6>
+        </div>
+        <div class="nav_button_container">
+          <label class="menu_button_2" for="check_2"><i class="fas fa-chart-bar"></i></label>
+          <h6 class="button_2_txt">Main charts</h6>
+        </div>
+        <div class="nav_button_container">
+          <label class="menu_button_1" for="check_1"><i class="fas fa-filter"></i></label>
+          <h6 class="button_1_txt">Filters</h6>
+        </div>
+      </div>
+
+      <div class="info_container">
+        <div class="info_title_container">
+          <h4 class="info_title_txt">Info</h4>
+          <i id="info_button_close" class="fas fa-times"></i>
+        </div>
+        <div class="info_txt_container">
+          <h5>Map</h5>
+          <div class="info_line_div"></div>
+          <p>You can <span class="green">click on the districts to see more information</span> about it. To close the
+            pop up window you can
+            click again on the district or use the close button on the top right corner.</p>
+        </div>
+      </div>
+
+      <div class="museums_list_container">
+        <div class="museums_list_title_container">
+          <h4 class="museums_list_title_txt">Museums list</h4>
+          <i id="museums_list_button_close" class="fas fa-times"></i>
+        </div>
+        <div class="museums_list_txt_container"></div>
+      </div>
+
+      <div class="art_galleries_list_container">
+        <div class="art_galleries_list_title_container">
+          <h4 class="art_galleries_list_title_txt">Art galleries list</h4>
+          <i id="art_galleries_list_button_close" class="fas fa-times"></i>
+        </div>
+        <div class="art_galleries_list_txt_container">
+          <p></p>
+        </div>
+      </div>
+
+      <div class="markets_list_container">
+        <div class="markets_list_title_container">
+          <h4 class="markets_list_title_txt">Markets list</h4>
+          <i id="markets_list_button_close" class="fas fa-times"></i>
+        </div>
+        <div class="markets_list_txt_container">
+          <p></p>
+        </div>
+      </div>
+
+      <div class="left_panel_1">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_1" class="fas fa-filter"></i>
+                <h3 class="title">Filters</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="main_filter_button" class="menu_title_container">
+                  <i id="menu_title_icon_filter_main" class="fas fa-award"></i>
+                  <h6 id="button_main_txt_1">Principal</h6>
+                </div>
+                <div id="special_filter_button" class="menu_title_container">
+                  <i id="menu_title_icon_filter_special" class="fas fa-star"></i>
+                  <h6 id="button_main_txt_2">Special</h6>
+                </div>
+                <div id="ranking_button" class="menu_title_container">
+                  <i id="menu_title_icon_ranking" class="fas fa-trophy"></i>
+                  <h6 id="button_main_txt_3">Ranking</h6>
+                </div>
+              </div>
+            </div>
+            <i id="info_button" class="fas fa-info"></i>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_1"></div>
+          </div>
+        </div>
+
+        <div id="main_filters_container" class="content_container">
+          <p>For the main filters selection you have to click on the button wich label describes the filter
+            that you want to add in order to calculate the top 10 districts to live in NYC. <br></br>
+            When a filter is activated you can modify the <span class="orange">importance level</span> for the final
+            calculation of the
+            districts score for the ranking.<br></br>
+            Remember that the <span class="orange">importance level</span> means how important is to you an especific
+            property for the ranking.
+            <span class="red">IT DOESN'T MEAN the actual level for that property</span> (for example far, medium and
+            close distance for the
+            closeness level).
+          </p>
+          <div class="main_filters_container">
+            <div class="location_filter_button">
+              <div id="location_title_conatiner" class="button_title_container">
+                <i id="location_button_icon" class="fas fa-map-marker-alt"></i>
+                <h6 id="location_button_title" class="button_title">Closeness level</h6>
+                <h6 id="location_check_message" class="check_message"></h6>
+              </div>
+              <div class="filters_selector_container">
+                <h5 id="location_slider_title">Importance level</h5>
+                <div class="slide_container">
+                  <input type="range" min="1" max="3" value="3" class="slider" id="location_slider"></input>
+                </div>
+                <h6 id="location_slider_output"></h6>
+              </div>
+            </div>
+            <div class="safety_filter_button">
+              <div id="safety_title_conatiner" class="button_title_container">
+                <i id="safety_button_icon" class="fas fa-user-shield"></i>
+                <h6 id="safety_button_title" class="button_title">Safety level</h6>
+                <h6 id="safety_check_message" class="check_message"></h6>
+              </div>
+              <div class="filters_selector_container">
+                <h5 id="safety_slider_title">Importance level</h5>
+                <div class="slide_container">
+                  <input type="range" min="1" max="3" value="3" class="slider" id="safety_slider"></input>
+                </div>
+                <h6 id="safety_slider_output"></h6>
+              </div>
+            </div>
+            <div class="affordability_filter_button">
+              <div id="affordability_title_conatiner" class="button_title_container">
+                <i id="affordability_button_icon" class="fas fa-hand-holding-usd"></i>
+                <h6 id="affordability_button_title" class="button_title">Affordability level</h6>
+                <h6 id="affordability_check_message" class="check_message"></h6>
+              </div>
+              <div class="filters_selector_container">
+                <h5 id="affordability_slider_title">Importance level</h5>
+                <div class="slide_container">
+                  <input type="range" min="1" max="3" value="3" class="slider" id="affordability_slider"></input>
+                </div>
+                <h6 id="affordability_slider_output"></h6>
+              </div>
+            </div>
+          </div>
+          <div class="divider_line"></div>
+        </div>
+
+        <div id="special_filters_container" class="content_container">
+          <p>The <span class="green">special filters</span> are a group of especific characteristics to have in mind in
+            the
+            moment of looking a good place to live<br></br>
+            There are 5 special filters that happen to be really useful when you think about it, these are:
+            the <span class="green">number of museums</span> as points of interest from the district,
+            the <span class="green">air quality</span>(referred to contamination) taken in 2005 - 2013 period,
+            the <span class="green">number art galleries</span> in wich you can spend time and have fun,
+            and finally the <span class="green">number of farmer markets</span> to fill up your kitchen cupboard.
+          </p>
+          <div class="special_filters_container">
+            <div id="special_filter_1" class="special_filter_button">
+              <div id="special_filter_button_title_1" class="special_filter_button_title_container">
+                <i id="special_filter_1_button_icon" class="fas fa-landmark fa-fw"></i>
+                <h3 class="special_filter_button_tittle">Museums</h3>
+              </div>
+              <i id="check_icon_1" class="fas fa-check"></i>
+            </div>
+            <div id="special_filter_2" class="special_filter_button">
+              <div id="special_filter_button_title_2" class="special_filter_button_title_container">
+                <i id="special_filter_2_button_icon" class="fas fa-wind fa-fw"></i>
+                <h3 class="special_filter_button_tittle">Air quality</h3>
+              </div>
+              <i id="check_icon_2" class="fas fa-check"></i>
+            </div>
+            <div id="special_filter_3" class="special_filter_button">
+              <div id="special_filter_button_title_3" class="special_filter_button_title_container">
+                <i id="special_filter_3_button_icon" class="fas fa-paint-brush fa-fw"></i>
+                <h3 class="special_filter_button_tittle">Art galleries</h3>
+              </div>
+              <i id="check_icon_3" class="fas fa-check"></i>
+            </div>
+            <div id="special_filter_4" class="special_filter_button">
+              <div id="special_filter_button_title_4" class="special_filter_button_title_container">
+                <i id="special_filter_4_button_icon" class="fas fa-shopping-basket fa-fw"></i>
+                <h3 class="special_filter_button_tittle">Farmers markets</h3>
+              </div>
+              <i id="check_icon_4" class="fas fa-check"></i>
+            </div>
+          </div>
+        </div>
+        <div id="ranking_container" class="content_container_orange">
+          <div class="ranking_warning_container">
+            <div class="ranking_warning_content">
+              <i id="ranking_warning_icon" class="fas fa-exclamation"></i>
+              <p class="ranking_warning_text">In order to visualize the ranking you must choose at least one of the
+                principal or one of the special filters above</p>
+            </div>
+          </div>
+          <div class="main_ranking_content">
+            <div class="top_one_container">
+              <div class="export_button_container">
+                <div class="export_button_top_ten">
+                  <h6>Export to CSV</h6>
+                </div>
+              </div>
+              <div class="one_container">
+                <h1 class="one_txt">1</h1>
+                <h3 class="st_txt">st</h3>
+              </div>
+              <div class="top_one_info_container">
+                <h2 id="top_one_borough"></h2>
+                <h1 id="top_one_id"></h1>
+              </div>
+              <div class="top_one_scores_container"></div>
+              <div id="top_one_map_link" class="top_one_map_button">
+                <h2>Go to district</h2>
+              </div>
+            </div>
+            <div class="ranking_table">
+              <div class="ranking_header"></div>
+              <div id="row_1" class="ranking_row">
+                <div id="row_content_1" class="ranking_row_content"></div>
+              </div>
+              <div id="row_2" class="ranking_row">
+                <div id="row_content_2" class="ranking_row_content"></div>
+              </div>
+              <div id="row_3" class="ranking_row">
+                <div id="row_content_3" class="ranking_row_content"></div>
+              </div>
+              <div id="row_4" class="ranking_row">
+                <div id="row_content_4" class="ranking_row_content"></div>
+              </div>
+              <div id="row_5" class="ranking_row">
+                <div id="row_content_5" class="ranking_row_content"></div>
+              </div>
+              <div id="row_6" class="ranking_row">
+                <div id="row_content_6" class="ranking_row_content"></div>
+              </div>
+              <div id="row_7" class="ranking_row">
+                <div id="row_content_7" class="ranking_row_content"></div>
+              </div>
+              <div id="row_8" class="ranking_row">
+                <div id="row_content_8" class="ranking_row_content"></div>
+              </div>
+              <div id="row_9" class="ranking_row">
+                <div id="row_content_9" class="ranking_row_content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="left_panel_2">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_2" class="fas fa-chart-bar"></i>
+                <h3 class="title">Charts</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="main_charts_button" class="menu_title_container">
+                  <i id="menu_title_icon_map_charts" class="fas fa-atlas"></i>
+                  <h6 id="button_main_2_txt_1">Main charts</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_2"></div>
+          </div>
+        </div>
+        <div class="main_graphs_content_padding"></div>
+        <div class="graphs_loader">
+          <div class="lds-graphs">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h5 class="graphs_loader_txt">Loading</h5>
+        </div>
+        <div id="main_graphs_content" class="content_container">
+          <div id="graphic_container" class="main_graph_container">
+            <h1 id="main_graph_title">Closeness graphic</h1>
+            <div class="graph_legend_container">
+              <div class="graph_legend_scale"></div>
+              <div class="graph_label_container">
+                <h6 class="graph_label_1">Far</h6>
+                <h6 class="graph_label_2">Close</h6>
+              </div>
+            </div>
+            <div id="graph_container">
+              <svg id="d3MainGraph"></svg>
+            </div>
+          </div>
+          <div class="main_graph_buttons_container">
+            <div id="closeness_graph_button" class="main_graph_button">
+              <i id="closeness_graph_icon" class="fas fa-map-marker-alt"></i>
+              <h5 id="closeness_graph_button_text">Closeness</h5>
+            </div>
+            <div id="safety_graph_button" class="main_graph_button">
+              <i id="safety_graph_icon" class="fas fa-user-shield"></i>
+              <h5 id="safety_graph_button_text">Safety</h5>
+            </div>
+            <div id="affordability_graph_button" class="main_graph_button">
+              <i id="affordability_graph_icon" class="fas fa-hand-holding-usd"></i>
+              <h5 id="affordability_graph_button_text">Affordability</h5>
+            </div>
+            <div id="museums_graph_button" class="main_graph_button">
+              <i id="museums_graph_icon" class="fas fa-landmark"></i>
+              <h5 id="museums_graph_button_text">Museums</h5>
+            </div>
+            <div id="air_quality_graph_button" class="main_graph_button">
+              <i id="air_quality_graph_icon" class="fas fa-wind"></i>
+              <h5 id="air_quality_graph_button_text">Pollution</h5>
+            </div>
+            <div id="art_galleries_graph_button" class="main_graph_button">
+              <i id="art_galleries_graph_icon" class="fas fa-paint-brush"></i>
+              <h5 id="art_galleries_graph_button_text">Galleries</h5>
+            </div>
+            <div id="markets_graph_button" class="main_graph_button">
+              <i id="markets_graph_icon" class="fas fa-shopping-basket"></i>
+              <h5 id="markets_graph_button_text">Markets</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="left_panel_3">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_3" class="fas fa-chart-pie"></i>
+                <h3 class="title">Charts</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="instructions_button" class="menu_title_container">
+                  <i id="menu_title_icon_instructions" class="fas fa-info"></i>
+                  <h6 id="button_graphs_txt_1">Instructions</h6>
+                </div>
+                <div id="first_button" class="menu_title_container">
+                  <i id="menu_title_icon_first" class="fas fa-trophy"></i>
+                  <h6 id="button_graphs_txt_2">First</h6>
+                </div>
+                <div id="second_button" class="menu_title_container">
+                  <i id="menu_title_icon_second" class="fas fa-medal"></i>
+                  <h6 id="button_graphs_txt_3">Second</h6>
+                </div>
+                <div id="third_button" class="menu_title_container">
+                  <i id="menu_title_icon_third" class="fas fa-award"></i>
+                  <h6 id="button_graphs_txt_4">Third</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_3"></div>
+          </div>
+        </div>
+        <div class="content_container" style="margin-top: 127.5px">
+          <div id="instructions_container">
+            <h2>The meaning of the graphics:</h2>
+            <p>
+              Down bellow you can find the graphs that represents the total score of the <span class="purple">top 3
+                districts</span>
+              to live in New york combining the <span class="purple">closest distance to NYU</span>,
+              the <span class="purple">lower number of crimes</span> (safer districts),
+              the <span class="purple">higher number of affordable units </span>,
+              the <span class="purple">higher number of museums</span>,
+              the <span class="purple">lower amount of air pollution </span> (air quality),
+              the <span class="purple">higher number of art galleries</span> and
+              the <span class="purple">higher number of farmers markets </span>. You can also find the color indicators
+              for these
+              values in the table bellow
+            </p>
+            <div id="graph_espec1" class="graph_espec">
+              <h4>Closeness level</h4>
+            </div>
+            <div id="graph_espec2" class="graph_espec">
+              <h4>Safety level</h4>
+            </div>
+            <div id="graph_espec3" class="graph_espec">
+              <h4>Affordability level</h4>
+            </div>
+            <div id="graph_espec4" class="graph_espec">
+              <h4>Number of museums</h4>
+            </div>
+            <div id="graph_espec5" class="graph_espec">
+              <h4>Air quality</h4>
+            </div>
+            <div id="graph_espec6" class="graph_espec">
+              <h4>Number of art galleries</h4>
+            </div>
+            <div id="graph_espec7" class="graph_espec">
+              <h4>Number of farmer markets</h4>
+            </div>
+          </div>
+
+          <div class="graph_divider_line"></div>
+          <div id="first_container" class="graph_container">
+            <div class="position_number_container">
+              <h1 class="position_number_txt">1</h1>
+              <h2 class="position_sufix_txt">st</h2>
+            </div>
+            <svg id="d3Graph1"></svg>
+          </div>
+          <div class="graph_divider_line"></div>
+          <div id="second_container" class="graph_container">
+            <div class="position_number_container">
+              <h1 class="position_number_txt">2</h1>
+              <h2 class="position_sufix_txt">nd</h2>
+            </div>
+            <svg id="d3Graph2"></svg>
+          </div>
+          <div class="graph_divider_line"></div>
+          <div id="third_container" style="margin-bottom: 96px;" class="graph_container">
+            <div class="position_number_container">
+              <h1 class="position_number_txt">3</h1>
+              <h2 class="position_sufix_txt">rd</h2>
+            </div>
+            <svg id="d3Graph3"></svg>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="left_panel_4">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_4" class="fas fa-map-marked-alt"></i>
+                <h3 class="title">Districts</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="main_filter_button" class="menu_title_container">
+                  <i id="menu_title_icon_filter_main_4" class="fas fa-list-ul"></i>
+                  <h6 id="button_main_4_txt">List</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_4"></div>
+          </div>
+        </div>
+        <div class="content_container">
+          <div class="districts_list_container">
+            <div class="districts_list_title_container">
+              <div class="export_button_container">
+                <div class="export_button_district_list">
+                  <h6>Export to CSV</h6>
+                </div>
+              </div>
+              <p class="districts_list_title">The 59 <span class="districts_list_title_alt">habitable districts</span>
+                of <span class="districts_list_title_alt">New York</span></p>
+            </div>
+            <div class="districts_table"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="left_panel_5">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_5" class="fas fa-equals"></i>
+                <h3 class="title">Comparision</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="set_districts_button" class="menu_title_container">
+                  <i id="menu_title_icon_main_5" class="fas fa-cog"></i>
+                  <h6 id="button_main_5_txt_1">Set districts</h6>
+                </div>
+                <div id="summary_button" class="menu_title_container">
+                  <i id="menu_title_icon_summary" class="fas fa-list-ul"></i>
+                  <h6 id="button_main_5_txt_2">Summary</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_5"></div>
+          </div>
+        </div>
+        <div class="content_container">
+          <div class="select_menu_container">
+            <div class="select_container" style="margin-right: 9px;">
+              <div class="select_title_container">
+                <h4>District</h4>
+                <h3 class="select_title_number_1">1</h3>
+              </div>
+              <div class="custom-select-1">
+                <select>
+                  <option value="0">Select Borough:</option>
+                  <option value="1">Manhattan</option>
+                  <option value="2">Bronx</option>
+                  <option value="3">Brooklyn</option>
+                  <option value="4">Queens</option>
+                  <option value="5">Staten Island</option>
+                </select>
+              </div>
+              <div class="custom-select-2"></div>
+              <div class="district_info_card_1">
+                <div class="district_info_card_warning">
+                  <i id="district_info_card_warning_icon" class="fas fa-info"></i>
+                  <p class="district_info_card_warning_text">Select a ditrict ID to see its information</p>
+                </div>
+              </div>
+            </div>
+            <div class="select_container" style="margin-left: 9px;">
+              <div class="select_title_container">
+                <h4>District</h4>
+                <h3 class="select_title_number_3">2</h3>
+              </div>
+              <div class="custom-select-3">
+                <select>
+                  <option value="0">Select Borough:</option>
+                  <option value="1">Manhattan</option>
+                  <option value="2">Bronx</option>
+                  <option value="3">Brooklyn</option>
+                  <option value="4">Queens</option>
+                  <option value="5">Staten Island</option>
+                </select>
+              </div>
+              <div class="custom-select-4"></div>
+              <div class="district_info_card_3">
+                <div class="district_info_card_warning">
+                  <i id="district_info_card_warning_icon" class="fas fa-info"></i>
+                  <p class="district_info_card_warning_text">Select a ditrict ID to see its information</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comparision_divider_line"></div>
+          <div class="summary_container">
+            <div class="summary_warning_container">
+              <div class="summary_warning_content">
+                <i id="summary_warning_icon" class="fas fa-exclamation"></i>
+                <p class="summary_warning_text">You must select two districts to see the comparision summary</p>
+              </div>
+            </div>
+            <div class="summary_descriptions_container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="left_panel_6">
+        <div class="title_container">
+          <div class="main_title_container">
+            <div class="top_menu_container">
+              <div class="main_panel_title">
+                <i id="title_icon_6" class="fas fa-question"></i>
+                <h3 class="title">About</h3>
+              </div>
+              <div class="menu_options_container">
+                <div id="website_button" class="menu_title_container">
+                  <i id="menu_title_icon_website" class="fas fa-globe"></i>
+                  <h6 id="button_main_6_txt_1">Web site</h6>
+                </div>
+                <div id="developer_button" class="menu_title_container">
+                  <i id="menu_title_icon_developer" class="fas fa-user"></i>
+                  <h6 id="button_main_6_txt_2">Developer</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu_indicator_container">
+            <div class="menu_indicator_6"></div>
+          </div>
+        </div>
+        <div class="content_container">
+          <div class="about_content_padding"></div>
+          <div class="about_website_container">
+            <p>
+              Are you a NYU Stern School of Business student who can't find a nice place
+              to live? a place that is <span class="bold">close to the university</span>
+              , where you <span class="bold">feel safe</span> and last but not least
+              <span class="bold">affordable</span> for a student.
+              For all these people this website helps to take the <span class="bold">right desition</span> , you can
+              filter all the districts in New York based on the principal filters below.
+            </p>
+            <div class="about_website_icons_container">
+              <div class="about_website_icon">
+                <i id="closeness_website_icon" class="fas fa-map-marker-alt"></i>
+                <h4>Closeness</h4>
+              </div>
+              <div class="about_website_icon">
+                <i id="safety_website_icon" class="fas fa-user-shield"></i>
+                <h4>Safety (Number of crimes)</h4>
+              </div>
+              <div class="about_website_icon">
+                <i id="affordability_website_icon" class="fas fa-hand-holding-usd"></i>
+                <h4>Number of affordable units</h4>
+              </div>
+            </div>
+            <p>
+              And for these ones who have <span class="bold">special interests</span> for the place they want to live
+              the website has another special options to make
+              your search more personalized and take an even better desition.
+            </p>
+            <div class="about_website_icons_container">
+              <div class="about_website_icon">
+                <i id="museums_website_icon" class="fas fa-landmark"></i>
+                <h4>Number of museums</h4>
+              </div>
+              <div class="about_website_icon">
+                <i id="air_quality_website_icon" class="fas fa-wind"></i>
+                <h4>Air quality</h4>
+              </div>
+              <div class="about_website_icon">
+                <i id="art_galleries_website_icon" class="fas fa-paint-brush"></i>
+                <h4>Number of art galleries</h4>
+              </div>
+              <div class="about_website_icon">
+                <i id="markets_website_icon" class="fas fa-shopping-basket"></i>
+                <h4>Number of farmers markets</h4>
+              </div>
+            </div>
+            <p>You can control your search however you like by <span class="bold">selecting the features for which you
+                want to filter the districts</span>.
+              Also you have <span class="bold">charts and graphics</span> that help you to see the information clearly
+              and
+              a <span class="bold">comparision tool</span> that allows you to make a direct comparision of two district
+              and see a summary
+              of which of both districts is the best in each of the features. Finally you have all the information that
+              you need to have of the districts and the
+              rankings in <span class="bold">tables</span>, <span class="bold">info windows</span>,
+              <span class="bold">pop-ups</span>, <span class="bold">and more</span>. So what are you waiting for?
+              <span class="bold">go and find your next home!</span></p>
+          </div>
+          <div class="about_divider_line"></div>
+          <div class="about_developer_container">
+            <div class="about_developer_content">
+              <div class="about_developer_icon">
+                <i id="developer_icon" class="fas fa-user"></i>
+                <h4>Developer</h4>
+              </div>
+              <p style="margin-bottom: 2px;">Jose Fernando Morantes Florez</p>
+              <p style="margin-bottom: 2px;">Student of computer engineering</p>
+              <p style="margin-bottom: 2px;">National University of Colombia</p>
+              <p style="width: 100%; text-align: center;">
+                <a class="developer_info_link" href="https://github.com/FernandoMorantes"
+                  target="_blank">Github</a>&nbsp - &nbsp
+                <a class="developer_info_link" href="https://www.linkedin.com/in/fernando-morantes-029557175/"
+                  target="_blank">Linkedin</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./js/map.js"></script>
+  <script type="text/javascript" src="./js/visualization.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
+  <!-- Google Maps -->
+  <script async defer
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB63_2wCGLLuvMadVGTh8oaaPKIcH67sBs&callback=onGoogleMapResponse&libraries=geometry">
+  </script>
+</body>
+
+</html>

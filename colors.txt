@@ -1,0 +1,6 @@
+black = 000000
+yellow = F9A825
+green = 558B2F
+purple = AB47BC
+blue = 03A9F4
+orange = FF5722
